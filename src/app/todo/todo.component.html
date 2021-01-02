@@ -1,0 +1,79 @@
+<div class="container">
+  <div
+    class="container-title"
+    [class.container-title-radius]="openDescription"
+    [class.container-title-done]="todo.done"
+  >
+    <div (clickOutside)="closeMenu()">
+      <div class="toggle-show" (click)="openMenu = !openMenu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="#ffffff"
+          width="18px"
+          height="18px"
+        >
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        
+      </div>
+  
+      <div
+        *ngIf="openMenu"
+        class="title-menu"
+      >
+        <ul class="menu-list">
+          <li *ngIf="todo.done; else elseDone" (click)="undone()" class="menu-list-item">Отменить</li>
+          <ng-template #elseDone>
+            <li (click)="done()" class="menu-list-item">Выполнить</li>
+          </ng-template> 
+          <li (click)="edit()" class="menu-list-item">Изменить</li>
+          <li (click)="delete()" class="menu-list-item">Удалить</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2
+      class="title"
+      [class.done]="todo.done"
+    >
+      {{ todo.title }}
+    </h2>
+    <div class="toggle-show" (click)="openDescription = !openDescription">
+      <svg
+        [class.arrow]="openDescription === true"
+        [class.arrow-rotate]="openDescription === false"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24" 
+        fill="#ffffff"
+        width="24px"
+        height="24px"
+      >
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+      </svg>
+    </div>
+  </div>
+  <div
+    *ngIf="openDescription"
+    [@stateChange]="openDescription ? 'open' : 'closed'"
+    class="container-description"
+    [class.container-description-done]="todo.done"
+  >
+    <p
+      class="description"
+      [innerHTML]="todo.description"
+    >
+    </p>
+  </div>
+  <app-modal
+      [show]="openModal"
+      [windowTitle]="'Изменить задачу'"
+      (clickClose)="openModal = false"
+      [title]="todo.title"
+      [description]="todo.description"
+      (clickSave)="update($event, todo)"
+    >
+    </app-modal>
+</div>

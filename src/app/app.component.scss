@@ -1,0 +1,32 @@
+.container {
+  max-width: 768px;
+  margin: .6rem auto;
+}
+.page-title {
+  text-align: center;
+  color: #ffffff;
+}
+.empty {
+  text-align: center;
+  padding: .6rem 0;
+}
+.add-btn {
+  margin: 1rem 0;
+  padding: .2rem;
+  background: none;
+  border: 1px solid #ffffff;
+  border-radius: .3rem;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pluse {
+  transition-duration: 300ms;
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
