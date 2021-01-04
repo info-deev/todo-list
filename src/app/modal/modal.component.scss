@@ -1,4 +1,4 @@
-.container {
+.modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -13,16 +13,19 @@
   background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
   color: #ffffff;
 }
-.modal-container {
-  margin: 0 auto;
+.container {
   max-width: 768px;
-  width: 100%;
+  margin: 0 auto;
+  width: calc(100% - 10px);
 }
 .header {
   text-align: center;
   font-size: x-large;
   font-weight: 500;
   margin: 1rem 0;
+}
+.body {
+  width: 100%;
 }
 .label {
   width: 100%;

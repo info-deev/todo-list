@@ -63,7 +63,6 @@ export class ModalComponent implements OnInit {
   
       this.clickSave.emit(item)
     } else {
-      console.log(1);
       this.showError()
     }
   }
